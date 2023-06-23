@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://xg5ujcnpwe7w"]
+[gd_scene load_steps=28 format=3 uid="uid://xg5ujcnpwe7w"]
 
 [ext_resource type="Texture2D" uid="uid://dsfthhfo2vv8k" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-04 Background.png" id="1_e6m05"]
 [ext_resource type="Texture2D" uid="uid://c82cf1wjjofd7" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-05 Background Objects.png" id="2_gckmk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hylqecj26fk" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-02.png" id="6_jj3ev"]
 [ext_resource type="Script" path="res://scripts/CutCircle2D.gd" id="7_3rkmt"]
 [ext_resource type="Texture2D" uid="uid://cxxg88h5bl5jx" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-03 Interactive objects.png" id="8_wcx33"]
+[ext_resource type="PhysicsMaterial" uid="uid://4u4dva8s3h3i" path="res://assets/ball_material.tres" id="9_e58mc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j23gk"]
 friction = 0.0
@@ -85,12 +86,16 @@ region = Rect2(1232, 2928, 1099, 601)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
 texture = ExtResource("1_e6m05")
+region_enabled = true
+region_rect = Rect2(0, 0, 50000, 9284)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture_repeat = 2
 texture = ExtResource("2_gckmk")
+region_enabled = true
+region_rect = Rect2(0, 0, 50000, 9284)
 
 [node name="Player" type="RigidBody2D" parent="."]
 z_index = 10
@@ -103,10 +108,9 @@ script = ExtResource("3_npgvx")
 WALK_ACCEL = 2000.0
 WALK_DEACCEL = 2000.0
 WALK_MAX_VELOCITY = 1000.0
-AIR_ACCEL = 500.0
-AIR_DEACCEL = 500.0
+AIR_ACCEL = 2000.0
+AIR_DEACCEL = 2000.0
 JUMP_VELOCITY = 1500.0
-STOP_JUMP_FORCE = 3000.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Player"]
 
@@ -223,7 +227,9 @@ shape = SubResource("CapsuleShape2D_xrxcp")
 texture = SubResource("AtlasTexture_50aes")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(-3798, -400)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("CircleShape2D_mdyqr")
@@ -234,7 +240,9 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_rjm2j")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(6458, -1391)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
 shape = SubResource("CircleShape2D_mdyqr")
@@ -245,7 +253,9 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_rjm2j")
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(6475, 626)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
 shape = SubResource("CircleShape2D_mdyqr")
@@ -256,7 +266,9 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_rjm2j")
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(7857, -391)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 shape = SubResource("CircleShape2D_mdyqr")
@@ -267,7 +279,9 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_rjm2j")
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(-5196, -1366)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
 shape = SubResource("CircleShape2D_mdyqr")
@@ -278,7 +292,9 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_rjm2j")
 
 [node name="RigidBody2D6" type="RigidBody2D" parent="."]
+z_index = 2
 position = Vector2(-5188, 600)
+physics_material_override = ExtResource("9_e58mc")
 
 [node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
 shape = SubResource("CircleShape2D_mdyqr")

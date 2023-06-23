@@ -10,13 +10,11 @@ extends RigidBody2D
 @export var  AIR_ACCEL:float = 100.0
 @export var  AIR_DEACCEL:float = 100.0
 @export var  JUMP_VELOCITY:float = 380
-@export var  STOP_JUMP_FORCE:float = 450.0
 @export var  MAX_SHOOT_POSE_TIME:float = 0.3
 @export var  MAX_FLOOR_AIRBORNE_TIME:float = 0.15
 
 var siding_left = false
 var jumping = false
-var stopping_jump = false
 var shooting = false
 
 var floor_h_velocity = 0.0
@@ -62,11 +60,6 @@ func _integrate_forces(state):
 		if lv.y > 0:
 			# Set off the jumping flag if going down.
 			jumping = false
-		elif not jump:
-			stopping_jump = true
-
-		if stopping_jump:
-			lv.y += STOP_JUMP_FORCE * step
 
 	if on_floor:
 		# Process logic when character is on floor.
@@ -87,7 +80,6 @@ func _integrate_forces(state):
 		if not jumping and jump:
 			lv.y = -JUMP_VELOCITY
 			jumping = true
-			stopping_jump = false
 	else:
 		# Process logic when the character is in the air.
 		if move_left and not move_right:
