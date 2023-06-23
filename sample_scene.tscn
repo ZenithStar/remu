@@ -1,0 +1,473 @@
+[gd_scene load_steps=27 format=3 uid="uid://xg5ujcnpwe7w"]
+
+[ext_resource type="Texture2D" uid="uid://dsfthhfo2vv8k" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-04 Background.png" id="1_e6m05"]
+[ext_resource type="Texture2D" uid="uid://c82cf1wjjofd7" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-05 Background Objects.png" id="2_gckmk"]
+[ext_resource type="Script" path="res://scripts/rigidbody_controller.gd" id="3_npgvx"]
+[ext_resource type="Texture2D" uid="uid://cgike1r7gcs2i" path="res://assets/remu.jpg" id="4_jgtxk"]
+[ext_resource type="Script" path="res://scripts/VisibleCollisionShape2D.gd" id="6_2igrg"]
+[ext_resource type="Texture2D" uid="uid://c0hylqecj26fk" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-02.png" id="6_jj3ev"]
+[ext_resource type="Script" path="res://scripts/CutCircle2D.gd" id="7_3rkmt"]
+[ext_resource type="Texture2D" uid="uid://cxxg88h5bl5jx" path="res://assets/Roposia (hub world)/Tilemaps/Tilemaps/Remu Prologue Hub World-03 Interactive objects.png" id="8_wcx33"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j23gk"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfgxy"]
+radius = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxd1a"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(2330, 798, 1099, 736)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvatf"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(2749, 2530, 955, 997)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gwmh"]
+radius = 75.0
+height = 3000.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nplj0"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(4012, 844, 1764, 677)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fd860"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n2l36"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrxcp"]
+radius = 296.0
+height = 5246.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50aes"]
+atlas = ExtResource("8_wcx33")
+region = Rect2(657, 205, 584, 5241)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdyqr"]
+radius = 200.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjm2j"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(334, 2812, 609, 746)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to6k0"]
+radius = 100.0
+height = 1000.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0iy7x"]
+radius = 200.0
+height = 50000.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnfsr"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(334, 2812, 609, 746)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud2cf"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(4176, 3299, 613, 228)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tua34"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(2749, 2530, 955, 997)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxlv6"]
+atlas = ExtResource("6_jj3ev")
+region = Rect2(1232, 2928, 1099, 601)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("1_e6m05")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 2
+texture = ExtResource("2_gckmk")
+
+[node name="Player" type="RigidBody2D" parent="."]
+z_index = 10
+position = Vector2(-1904, -229)
+physics_material_override = SubResource("PhysicsMaterial_j23gk")
+max_contacts_reported = 8
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("3_npgvx")
+WALK_ACCEL = 2000.0
+WALK_DEACCEL = 2000.0
+WALK_MAX_VELOCITY = 1000.0
+AIR_ACCEL = 500.0
+AIR_DEACCEL = 500.0
+JUMP_VELOCITY = 1500.0
+STOP_JUMP_FORCE = 3000.0
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_cfgxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(0, -9)
+texture = ExtResource("4_jgtxk")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Big Island 1" type="Node2D" parent="."]
+position = Vector2(3165, -18)
+
+[node name="Sprite2D" type="Sprite2D" parent="Big Island 1"]
+z_index = -1
+position = Vector2(652, -437)
+texture = SubResource("AtlasTexture_bxd1a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Big Island 1"]
+z_index = -1
+position = Vector2(-692, -573)
+texture = SubResource("AtlasTexture_cvatf")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Big Island 1"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Big Island 1/StaticBody2D2"]
+z_index = 1
+shape = SubResource("CapsuleShape2D_3gwmh")
+script = ExtResource("6_2igrg")
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="Node2D2" type="Node2D" parent="Big Island 1"]
+position = Vector2(0, 292)
+rotation = -3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 1500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Big Island 2" type="Node2D" parent="."]
+position = Vector2(-496, -26)
+
+[node name="Sprite2D" type="Sprite2D" parent="Big Island 2"]
+z_index = -1
+position = Vector2(0, -410)
+texture = SubResource("AtlasTexture_nplj0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Big Island 2"]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Big Island 2/StaticBody2D2"]
+z_index = 1
+shape = SubResource("CapsuleShape2D_3gwmh")
+script = ExtResource("6_2igrg")
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="Node2D2" type="Node2D" parent="Big Island 2"]
+position = Vector2(0, 292)
+rotation = -3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 1500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-9000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_fd860")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(9000, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("WorldBoundaryShape2D_n2l36")
+disabled = true
+
+[node name="Elevator 1" type="Node2D" parent="."]
+position = Vector2(-2621, 1364)
+
+[node name="Elevator" type="Area2D" parent="Elevator 1"]
+monitorable = false
+gravity_space_override = 4
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 1500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator 1/Elevator"]
+shape = SubResource("CapsuleShape2D_xrxcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Elevator 1"]
+texture = SubResource("AtlasTexture_50aes")
+
+[node name="Elevator 2" type="Node2D" parent="."]
+position = Vector2(5322, 1364)
+
+[node name="Elevator" type="Area2D" parent="Elevator 2"]
+monitorable = false
+gravity_space_override = 4
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 1500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator 2/Elevator"]
+shape = SubResource("CapsuleShape2D_xrxcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Elevator 2"]
+texture = SubResource("AtlasTexture_50aes")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-3798, -400)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(6458, -1391)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(6475, 626)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(7857, -391)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(-5196, -1366)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D5"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="."]
+position = Vector2(-5188, 600)
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
+shape = SubResource("CircleShape2D_mdyqr")
+script = ExtResource("6_2igrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D6"]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_rjm2j")
+
+[node name="Small Island 1" type="Node2D" parent="."]
+position = Vector2(-5200, -1000)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 1"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 1/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 1"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Small Island 2" type="Node2D" parent="."]
+position = Vector2(-5200, 1000)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 2"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 2/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 2"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Small Island 3" type="Node2D" parent="."]
+position = Vector2(-3809, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 3"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 3/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 3"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Small Island 4" type="Node2D" parent="."]
+position = Vector2(6459, -1000)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 4"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 4/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 4"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Small Island 5" type="Node2D" parent="."]
+position = Vector2(6459, 1000)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 5"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 5/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 5"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Small Island 6" type="Node2D" parent="."]
+position = Vector2(7850, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Small Island 6"]
+
+[node name="VisibleCollisionShape2D" type="CollisionShape2D" parent="Small Island 6/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to6k0")
+script = ExtResource("6_2igrg")
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="CutCircle2D" type="Node2D" parent="Small Island 6"]
+z_index = -1
+position = Vector2(0, 144)
+rotation = 3.14159
+script = ExtResource("7_3rkmt")
+color = Color(0.537255, 0.537255, 0.537255, 1)
+radius = 500.0
+angle_from = -100.0
+angle_to = 100.0
+
+[node name="Bottom Floor" type="Node2D" parent="."]
+position = Vector2(0, 4600)
+
+[node name="Bottom Floor" type="StaticBody2D" parent="Bottom Floor"]
+z_index = 1
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Floor/Bottom Floor"]
+z_index = 1
+position = Vector2(-63, -37.9998)
+shape = SubResource("CapsuleShape2D_0iy7x")
+script = ExtResource("6_2igrg")
+color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[node name="Lamp1" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(-1331, -636)
+texture = SubResource("AtlasTexture_tnfsr")
+
+[node name="Lamp2" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(3915, -636)
+texture = SubResource("AtlasTexture_tnfsr")
+
+[node name="Lamp3" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(9058, -636)
+texture = SubResource("AtlasTexture_tnfsr")
+
+[node name="Lamp4" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(-9026, -636)
+texture = SubResource("AtlasTexture_tnfsr")
+
+[node name="Grass1" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(-2114, -378)
+texture = SubResource("AtlasTexture_ud2cf")
+
+[node name="Grass2" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(4901, -385)
+texture = SubResource("AtlasTexture_ud2cf")
+
+[node name="Building1" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(1329.5, -758.5)
+texture = SubResource("AtlasTexture_tua34")
+
+[node name="Building2" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(6904.5, -758.5)
+texture = SubResource("AtlasTexture_tua34")
+
+[node name="Building3" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(-4181.5, -758.5)
+texture = SubResource("AtlasTexture_tua34")
+
+[node name="Short Building1" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(54, -552)
+texture = SubResource("AtlasTexture_yxlv6")
+
+[node name="Short Building2" type="Sprite2D" parent="Bottom Floor"]
+position = Vector2(2583, -552)
+texture = SubResource("AtlasTexture_yxlv6")
